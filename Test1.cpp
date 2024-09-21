@@ -2,6 +2,7 @@
 #include <iostream>
 using namespace std;
 //#include "Event.h"
+#include <string.h>
 
 // Quelques conseils avant de commencer...
 // * N'oubliez pas de tracer (cout << ...) tous les constructeurs et le destructeur !!! Ca, c'est pas un conseil,
@@ -15,6 +16,56 @@ using namespace std;
 //   de la classe, le .cpp contenant la definition des methodes, et ensuite le makefile permettant de compiler
 //   le tout grace a la commande make 
 
+class Event 
+{
+  private:
+    int code; 
+    char * title;
+  
+  public: 
+    Event ()
+    {
+      title = new char[20];
+      code = 1;
+      strcpy(title,"default");
+    }
+
+    void display ()
+    {
+      cout <<"title = "<<title<<endl;
+      cout <<"Code  = "<<code<<endl;
+    }
+    void setCode(int c){
+      if (c<0){
+        return;
+
+      }else {
+        code = c;
+      }
+    }
+    void setTitle(const char* t){
+      if (strlen(t)==0){
+        return ;
+      }
+      delete[]title;
+      title = new char[strlen(t)+1];
+      strcpy(title,t);
+
+    }
+    int getCode (){
+      return code;
+    }
+    char* getTitle(){
+      return title;
+    }
+   Event (int c,  const char*t){
+      code = c;
+      title = nullptr;
+      setTitle(t);
+      strcpy(title,t);
+    }
+};
+
 int main()
 {
   cout << endl << "(1) ***** Test constructeur par defaut + Affiche *******************************" << endl;
@@ -22,7 +73,7 @@ int main()
     Event event;
     event.display();
   } // La presence des accolades assure que le destructeur de Event sera appele --> a tracer !
-
+  
   cout << endl << "(2) ***** Test des setters et getters *****" << endl;
   {
     Event event;
@@ -54,6 +105,7 @@ int main()
     cout << "event1 (APRES) :" << endl;
     event1.display();
   }
+
 
   cout << endl << "(5) ***** Test d'allocation dynamique (constructeur par defaut) ****************" << endl;
   {
