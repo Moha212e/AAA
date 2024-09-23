@@ -13,6 +13,7 @@ void Essai1();
 //void Essai3();
 //void Essai4();
 class Time
+
 {
 private:
   int hour;
@@ -24,7 +25,7 @@ public:
   {
     hour = 0;
     minute = 0;
-    duration =0;
+    duration = 0;
   }
 
   void display() const
@@ -61,8 +62,36 @@ public:
     hour = h;
     minute = m;
   }
-  
+  Time(int du)
+  {
+    int i = 0;
+    int h = 0;
+    int m = 0;
+    while (i != 5)
+    {
+      if (du > 60)
+      {
+        du -= 60;
+        h++;
+      }
+      else
+      {
+        m = du;
+        i = 5;
+      }
+    }
+    setHour(h);
+    setMinute(m);
+  }
 };
+class Timing
+{
+private:   
+  int day;
+  int month;
+
+
+}; 
 int main(int argc, char *argv[])
 {
   int choix;
@@ -157,32 +186,34 @@ void Essai1()
     duration.display();
     cout << endl;
   }
-  /*
-  cout << endl << "(5) ***** Test du constructeur de copie de Time *******************************" << endl;
+
+  cout << endl
+       << "(5) ***** Test du constructeur de copie de Time *******************************" << endl;
   {
-    Time h1(10,30);
+    Time h1(10, 30);
     h1.display();
-    cout << endl << "Copie : " ;
+    cout << endl
+         << "Copie : ";
     Time h2(h1);
     h2.display();
     cout << endl;
   }
-  */
 }
 /*
 /*******************************************************************************************************/
 /*** Tests de la classe Timing (Agregation par valeur avec un objet Time) ******************************/
 /*******************************************************************************************************/
 
-/*void Essai2()
+void Essai2()
 {
-  cout << endl << "(1) ***** Test du constructeur par defaut de Timing ****************************" << endl;
+  cout << endl
+       << "(1) ***** Test du constructeur par defaut de Timing ****************************" << endl;
   {
     Timing t;
     t.display();
     cout << endl;
   }
-
+  /*
   cout << endl << "(2) **** Test des setters/getters **********************************************" << endl;
   {
     Timing t;
@@ -231,9 +262,9 @@ void Essai1()
 }
 
 /*******************************************************************************************************/
-/*** Tests de la classe Event (Agregation par reference d'un objet Timing) *****************************/
-/*******************************************************************************************************/
-/*void Essai3()
+  /*** Tests de la classe Event (Agregation par reference d'un objet Timing) *****************************/
+  /*******************************************************************************************************/
+  /*void Essai3()
 {
   cout << endl << "(1) ***** Test constructeur par defaut + display *******************************" << endl;
   {
@@ -289,9 +320,9 @@ void Essai1()
 }
 
 /*******************************************************************************************************/
-/*** Tests des variables statiques utiles **************************************************************/
-/*******************************************************************************************************/
-/*
+  /*** Tests des variables statiques utiles **************************************************************/
+  /*******************************************************************************************************/
+  /*
 void Essai4()
 {
   cout << endl << "(1) ***** Tests de base des jours de la semaine ********************************" << endl;

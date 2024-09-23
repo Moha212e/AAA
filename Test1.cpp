@@ -38,10 +38,9 @@ class Event
     void setCode(int c){
       if (c<0){
         return;
-
-      }else {
-        code = c;
       }
+        code = c;
+      
     }
     void setTitle(const char* t){
       if (strlen(t)==0){
