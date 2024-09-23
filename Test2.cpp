@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <iostream>
+#include <string.h>
 using namespace std;
 //#include "Time.h"
 //#include "Timing.h"
@@ -9,7 +10,7 @@ using namespace std;
 
 int Menu();
 void Essai1();
-//void Essai2();
+void Essai2();
 //void Essai3();
 //void Essai4();
 class Time
@@ -86,12 +87,34 @@ public:
 };
 class Timing
 {
-private:   
-  int day;
+private:
+  char *day ;
   int month;
 
+public:
+  Timing()
+  {
+    day = new char [10];
+    strcpy(day,"dedault");
+    month = 0;
+  }
+  void display()
+  {
+    cout << "jour : " << day << endl;
+    cout << "mois : " << month << endl;
+  }
+  void setDay(char *d)
+  {
+    if (strlen(day)==0|| strlen(day)>10){
+      return;
+    }
+    strcpy(day,d);
+  }
+  void setStart(Time(int h,int m)){
 
-}; 
+  }
+  
+};
 int main(int argc, char *argv[])
 {
   int choix;
@@ -111,7 +134,9 @@ int main(int argc, char *argv[])
     case 1:
       Essai1();
       break;
-    //case 2 : Essai2(); break;
+    case 2:
+      Essai2();
+      break;
     //case 3 : Essai3(); break;
     //case 4 : Essai4(); break;
     default:
@@ -213,12 +238,13 @@ void Essai2()
     t.display();
     cout << endl;
   }
-  /*
-  cout << endl << "(2) **** Test des setters/getters **********************************************" << endl;
+
+  cout << endl
+       << "(2) **** Test des setters/getters **********************************************" << endl;
   {
     Timing t;
     t.setDay("Mardi");
-    t.setStart(Time(8,20));
+    t.setStart(Time(8, 20));
     t.setDuration(Time(90));
     t.display();
     cout << endl;
@@ -230,7 +256,7 @@ void Essai2()
     t.getDuration().display();
     cout << endl;
   }
-
+  /*
   cout << endl << "(3) ***** Test du constructeur d'initialisation de Timing **********************" << endl;
   {
     Timing t("Vendredi",Time(13,30),Time(120));
@@ -259,12 +285,13 @@ void Essai2()
     t1.display();
     cout << endl << endl;
   }
+  */
 }
 
 /*******************************************************************************************************/
-  /*** Tests de la classe Event (Agregation par reference d'un objet Timing) *****************************/
-  /*******************************************************************************************************/
-  /*void Essai3()
+/*** Tests de la classe Event (Agregation par reference d'un objet Timing) *****************************/
+/*******************************************************************************************************/
+/*void Essai3()
 {
   cout << endl << "(1) ***** Test constructeur par defaut + display *******************************" << endl;
   {
@@ -320,9 +347,9 @@ void Essai2()
 }
 
 /*******************************************************************************************************/
-  /*** Tests des variables statiques utiles **************************************************************/
-  /*******************************************************************************************************/
-  /*
+/*** Tests des variables statiques utiles **************************************************************/
+/*******************************************************************************************************/
+/*
 void Essai4()
 {
   cout << endl << "(1) ***** Tests de base des jours de la semaine ********************************" << endl;
