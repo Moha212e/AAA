@@ -90,6 +90,8 @@ class Timing
 private:
   char *day ;
   int month;
+  int h;
+  int m;
 
 public:
   Timing()
@@ -110,9 +112,20 @@ public:
     }
     strcpy(day,d);
   }
-  void setStart(Time(int h,int m)){
+  void setStart(int h,int m){
+      Time (int h,int m){
 
+      }
+      
   }
+  void setDuration(){
+    
+  }
+  char * getDay(){
+    return day;
+  }
+  
+
   
 };
 int main(int argc, char *argv[])
