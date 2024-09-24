@@ -97,7 +97,7 @@ private:
 public:
   Timing()
   {
-    day = new char[10];
+    day = new char[30];
     month = 0;
     startTime = Time(0, 0);
     duration = Time(0);
@@ -116,7 +116,7 @@ public:
 
   void setDay(const char *d)
   {
-    if (strlen(d) == 0 || strlen(d) > 10)
+    if (strlen(d) == 0 || strlen(d) > 30)
       return;
     strcpy(day, d);
   }
@@ -142,8 +142,12 @@ public:
   }
 
   Time &getDuration() 
+
   {
     return duration;
+  }
+  Timing (char *d,Time &t,Time &t2){
+    
   }
 };
 int main(int argc, char *argv[])
@@ -287,13 +291,14 @@ void Essai2()
     t.getDuration().display();
     cout << endl;
   }
-  /*
+  
   cout << endl << "(3) ***** Test du constructeur d'initialisation de Timing **********************" << endl;
   {
     Timing t("Vendredi",Time(13,30),Time(120));
     t.display();
     cout << endl;
   }
+  /*
 
   cout << endl << "(4) ***** Test du constructeur de copie de Timing ******************************" << endl;
   {
