@@ -85,48 +85,66 @@ public:
     setMinute(m);
   }
 };
+
 class Timing
 {
 private:
-  char *day ;
+  char *day;
   int month;
-  int h;
-  int m;
+  Time startTime;
+  Time duration;
 
 public:
   Timing()
   {
-    day = new char [10];
-    strcpy(day,"dedault");
+    day = new char[10];
     month = 0;
+    startTime = Time(0, 0);
+    duration = Time(0);
+    strcpy(day, "default");
   }
-  void display()
-  {
-    cout << "jour : " << day << endl;
-    cout << "mois : " << month << endl;
-  }
-  void setDay(char *d)
-  {
-    if (strlen(day)==0|| strlen(day)>10){
-      return;
-    }
-    strcpy(day,d);
-  }
-  void setStart(int h,int m){
-      Time (int h,int m){
 
-      }
-      
+  void display() 
+  {
+    cout << "Jour : " << day << endl;
+    cout << "Mois : " << month << endl;
+    cout << "Debut : ";
+    startTime.display();
+    cout << "Duree : ";
+    duration.display();
   }
-  void setDuration(){
-    
+
+  void setDay(const char *d)
+  {
+    if (strlen(d) == 0 || strlen(d) > 10)
+      return;
+    strcpy(day, d);
   }
-  char * getDay(){
+
+  void setStart(const Time &t)
+  {
+    startTime = t;
+  }
+
+  void setDuration(const Time &t)
+  {
+    duration = t;
+  }
+
+  char *getDay() 
+  {
     return day;
   }
-  
 
-  
+  Time &getStart() 
+  {
+    return startTime;
+  }
+
+  Time &getDuration() 
+  {
+    return duration;
+  }
 };
 int main(int argc, char *argv[])
 {
