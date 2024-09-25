@@ -2,9 +2,9 @@
 #include <iostream>
 #include <string.h>
 using namespace std;
-//#include "Time.h"
-//#include "Timing.h"
-//#include "Event.h"
+#include "Time.h"
+#include "Timing.h"
+#include "Event.h"
 
 //using namespace planning;
 
@@ -13,143 +13,6 @@ void Essai1();
 void Essai2();
 //void Essai3();
 //void Essai4();
-class Time
-
-{
-private:
-  int hour;
-  int minute;
-  int duration;
-
-public:
-  Time()
-  {
-    hour = 0;
-    minute = 0;
-    duration = 0;
-  }
-
-  void display() const
-  {
-    cout << hour << "h" << minute << endl;
-  }
-  void setHour(int h)
-  {
-    if (h > 24 || h < 0)
-    {
-      return;
-    }
-    hour = h;
-  }
-  void setMinute(int m)
-  {
-    if (m > 60 || m < 0)
-    {
-      return;
-    }
-    minute = m;
-  }
-  int getHour()
-  {
-    return hour;
-  }
-  int getMinute()
-  {
-    return minute;
-  }
-
-  Time(int h, int m)
-  {
-    hour = h;
-    minute = m;
-  }
-  Time(int du)
-  {
-    int i = 0;
-    int h = 0;
-    int m = 0;
-    while (i != 5)
-    {
-      if (du > 60)
-      {
-        du -= 60;
-        h++;
-      }
-      else
-      {
-        m = du;
-        i = 5;
-      }
-    }
-    setHour(h);
-    setMinute(m);
-  }
-};
-
-class Timing
-{
-private:
-  char *day;
-  int month;
-  Time startTime;
-  Time duration;
-
-public:
-  Timing()
-  {
-    day = new char[30];
-    month = 0;
-    startTime = Time(0, 0);
-    duration = Time(0);
-    strcpy(day, "default");
-  }
-
-  void display() 
-  {
-    cout << "Jour : " << day << endl;
-    cout << "Mois : " << month << endl;
-    cout << "Debut : ";
-    startTime.display();
-    cout << "Duree : ";
-    duration.display();
-  }
-
-  void setDay(const char *d)
-  {
-    if (strlen(d) == 0 || strlen(d) > 30)
-      return;
-    strcpy(day, d);
-  }
-
-  void setStart(const Time &t)
-  {
-    startTime = t;
-  }
-
-  void setDuration(const Time &t)
-  {
-    duration = t;
-  }
-
-  char *getDay() 
-  {
-    return day;
-  }
-
-  Time &getStart() 
-  {
-    return startTime;
-  }
-
-  Time &getDuration() 
-
-  {
-    return duration;
-  }
-  Timing (char *d,Time &t,Time &t2){
-    
-  }
-};
 int main(int argc, char *argv[])
 {
   int choix;
@@ -291,14 +154,15 @@ void Essai2()
     t.getDuration().display();
     cout << endl;
   }
-  
-  cout << endl << "(3) ***** Test du constructeur d'initialisation de Timing **********************" << endl;
+
+  cout << endl
+       << "(3) ***** Test du constructeur d'initialisation de Timing **********************" << endl;
   {
-    Timing t("Vendredi",Time(13,30),Time(120));
+    Timing t("Vendredi",Time(13, 30),Time(120));
     t.display();
     cout << endl;
   }
-  /*
+  
 
   cout << endl << "(4) ***** Test du constructeur de copie de Timing ******************************" << endl;
   {
@@ -321,7 +185,7 @@ void Essai2()
     t1.display();
     cout << endl << endl;
   }
-  */
+  
 }
 
 /*******************************************************************************************************/

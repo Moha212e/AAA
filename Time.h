@@ -1,5 +1,5 @@
-#include <iostream>
 class Time
+
 {
 private:
   int hour;
@@ -11,7 +11,7 @@ public:
   {
     hour = 0;
     minute = 0;
-    duration =0;
+    duration = 0;
   }
 
   void display() const
@@ -48,5 +48,25 @@ public:
     hour = h;
     minute = m;
   }
-  
+  Time(int du)
+  {
+    int i = 0;
+    int h = 0;
+    int m = 0;
+    while (i != 5)
+    {
+      if (du > 60)
+      {
+        du -= 60;
+        h++;
+      }
+      else
+      {
+        m = du;
+        i = 5;
+      }
+    }
+    setHour(h);
+    setMinute(m);
+  }
 };
