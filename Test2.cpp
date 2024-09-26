@@ -180,6 +180,7 @@ void Essai2()
       cout << "t2 : ";
       t2.display();
       cout << endl;
+      
     }
     cout << "t1 (APRES) : ";
     t1.display();
