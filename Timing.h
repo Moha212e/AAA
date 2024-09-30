@@ -1,3 +1,5 @@
+#include <string.h>
+
 class Timing
 {
 private:
@@ -54,7 +56,6 @@ public:
   {
     return day;
   }
-  
 
   Time &getStart()
   {
@@ -66,5 +67,16 @@ public:
   {
     return duration;
   }
-
+  Timing(const Timing &copie)
+  {
+    day = new char[30];
+    strcpy(day, copie.day);
+    month = copie.month;
+    startTime = copie.startTime;
+    duration = copie.duration;
+  }
+  ~Timing()
+  {
+    delete[] day; 
+  }
 };

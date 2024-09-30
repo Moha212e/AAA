@@ -1,3 +1,5 @@
+#include <string.h>
+
 class Event
 
 {
@@ -5,19 +7,31 @@ class Event
 private:
   int code;
   char *title;
-
+  Timing setTiming;
 public:
+void setTiming(const Timing &timing) {
+        setTiming = timing;
+    }
   Event()
   {
     title = new char[20];
     code = 1;
     strcpy(title, "default");
+    setTiming = Timing("Default",Time(0,0),Time(0));
+
+  }
+  Event(const char *t,const int c , const Time &set){
+    title = new char [20];
+    code =0;
+    strcpy(title, t);
+    setTiming = set;
   }
 
   void display()
   {
     cout << "title = " << title << endl;
     cout << "Code  = " << code << endl;
+    
   }
   void setCode(int c)
   {
@@ -46,10 +60,15 @@ public:
     return title;
   }
   Event(int c, const char *t)
+
   {
     code = c;
     title = nullptr;
     setTitle(t);
     strcpy(title, t);
   }
+  Timing &getTiming (){
+    return setTiming;
+  }
+  
 };

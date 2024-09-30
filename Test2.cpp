@@ -11,7 +11,7 @@ using namespace std;
 int Menu();
 void Essai1();
 void Essai2();
-//void Essai3();
+void Essai3();
 //void Essai4();
 int main(int argc, char *argv[])
 {
@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
     case 2:
       Essai2();
       break;
-    //case 3 : Essai3(); break;
+    case 3 : Essai3(); break;
     //case 4 : Essai4(); break;
     default:
       fini = true;
@@ -192,8 +192,9 @@ void Essai2()
 /*******************************************************************************************************/
 /*** Tests de la classe Event (Agregation par reference d'un objet Timing) *****************************/
 /*******************************************************************************************************/
-/*void Essai3()
+void Essai3()
 {
+
   cout << endl << "(1) ***** Test constructeur par defaut + display *******************************" << endl;
   {
     Event event;
@@ -215,7 +216,7 @@ void Essai2()
     event.getTiming().display();
     cout << endl;
   }
-
+/*
   cout << endl << "(3) ***** Test du constructeur d'initialisation ********************************" << endl;
   {
     Event event(2,"Cinema avec les potos");
@@ -245,6 +246,7 @@ void Essai2()
     event1.display();
     cout << endl << endl;
   }
+  */
 }
 
 /*******************************************************************************************************/
