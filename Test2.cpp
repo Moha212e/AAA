@@ -1,45 +1,34 @@
 #include <stdlib.h>
 #include <iostream>
-#include <string.h>
 using namespace std;
 #include "Time.h"
 #include "Timing.h"
 #include "Event.h"
 
-//using namespace planning;
+using namespace planning;
 
-int Menu();
+int  Menu();
 void Essai1();
 void Essai2();
 void Essai3();
-//void Essai4();
-int main(int argc, char *argv[])
+void Essai4();
+
+int main(int argc,char* argv[])
 {
   int choix;
   bool fini = false;
-
-  while (!fini)
+  
+  while(!fini)
   {
-    if (argc == 2)
+    if (argc == 2) { choix = atoi(argv[1]); fini = true; }
+    else choix = Menu();
+    switch(choix)
     {
-      choix = atoi(argv[1]);
-      fini = true;
-    }
-    else
-      choix = Menu();
-    switch (choix)
-    {
-    case 1:
-      Essai1();
-      break;
-    case 2:
-      Essai2();
-      break;
-    case 3 : Essai3(); break;
-    //case 4 : Essai4(); break;
-    default:
-      fini = true;
-      break;
+      case 1 : Essai1(); break;
+      case 2 : Essai2(); break;
+      case 3 : Essai3(); break;
+      case 4 : Essai4(); break;
+      default : fini = true ; break;
     }
   }
 
@@ -56,9 +45,8 @@ int Menu()
   cout << " 1. Tests de la classe Time" << endl;
   cout << " 2. Tests de la classe Timing (Agregation par valeur avec un objet Time)" << endl;
   cout << " 3. Tests de la classe Event (Agregation par reference avec un objet Timing)" << endl;
-  cout << " 4. Tests des variables staatiques utiles" << endl;
-  cout << " 5. Quitter" << endl
-       << endl;
+  cout << " 4. Tests des variables statiques utiles" << endl;
+  cout << " 5. Quitter" << endl << endl;
 
   int ch;
   cout << "  Choix : ";
@@ -71,17 +59,14 @@ int Menu()
 /*******************************************************************************************************/
 void Essai1()
 {
-
-  cout << endl
-       << "(1) ***** Test du constructeur par defaut de Time *****************************" << endl;
+  cout << endl << "(1) ***** Test du constructeur par defaut de Time *****************************" << endl;
   {
     Time instant;
     instant.display();
     cout << endl;
   }
 
-  cout << endl
-       << "(2) **** Test des setters/getters **********************************************" << endl;
+  cout << endl << "(2) **** Test des setters/getters **********************************************" << endl;
   {
     Time instant;
     instant.display();
@@ -89,60 +74,52 @@ void Essai1()
     instant.setHour(9);
     instant.setMinute(20);
     instant.display();
-    cout << endl
-         << "heure : " << instant.getHour() << endl;
+    cout << endl << "heure : " << instant.getHour() << endl;
     cout << "Minute : " << instant.getMinute() << endl;
   }
 
-  cout << endl
-       << "(3) ***** Test du constructeur d'initialisation de Time (instant) **************" << endl;
+  cout << endl << "(3) ***** Test du constructeur d'initialisation de Time (instant) **************" << endl;
   {
-    Time instant(8, 5);
+    Time instant(8,5);
     instant.display();
     cout << endl;
   }
 
-  cout << endl
-       << "(4) ***** Test du constructeur d'initialisation de Time (duree) ****************" << endl;
+  cout << endl << "(4) ***** Test du constructeur d'initialisation de Time (duree) ****************" << endl;
   {
     Time duration(135);
     duration.display();
     cout << endl;
   }
 
-  cout << endl
-       << "(5) ***** Test du constructeur de copie de Time *******************************" << endl;
+  cout << endl << "(5) ***** Test du constructeur de copie de Time *******************************" << endl;
   {
-    Time h1(10, 30);
+    Time h1(10,30);
     h1.display();
-    cout << endl
-         << "Copie : ";
+    cout << endl << "Copie : " ;
     Time h2(h1);
     h2.display();
     cout << endl;
   }
 }
-/*
+
 /*******************************************************************************************************/
 /*** Tests de la classe Timing (Agregation par valeur avec un objet Time) ******************************/
 /*******************************************************************************************************/
-
 void Essai2()
 {
-  cout << endl
-       << "(1) ***** Test du constructeur par defaut de Timing ****************************" << endl;
+  cout << endl << "(1) ***** Test du constructeur par defaut de Timing ****************************" << endl;
   {
     Timing t;
     t.display();
     cout << endl;
   }
 
-  cout << endl
-       << "(2) **** Test des setters/getters **********************************************" << endl;
+  cout << endl << "(2) **** Test des setters/getters **********************************************" << endl;
   {
     Timing t;
     t.setDay("Mardi");
-    t.setStart(Time(8, 20));
+    t.setStart(Time(8,20));
     t.setDuration(Time(90));
     t.display();
     cout << endl;
@@ -155,14 +132,12 @@ void Essai2()
     cout << endl;
   }
 
-  cout << endl
-       << "(3) ***** Test du constructeur d'initialisation de Timing **********************" << endl;
+  cout << endl << "(3) ***** Test du constructeur d'initialisation de Timing **********************" << endl;
   {
-    Timing t("Vendredi",Time(13, 30),Time(120));
+    Timing t("Vendredi",Time(13,30),Time(120));
     t.display();
     cout << endl;
   }
-  
 
   cout << endl << "(4) ***** Test du constructeur de copie de Timing ******************************" << endl;
   {
@@ -180,13 +155,11 @@ void Essai2()
       cout << "t2 : ";
       t2.display();
       cout << endl;
-      
     }
     cout << "t1 (APRES) : ";
     t1.display();
     cout << endl << endl;
   }
-  
 }
 
 /*******************************************************************************************************/
@@ -194,7 +167,6 @@ void Essai2()
 /*******************************************************************************************************/
 void Essai3()
 {
-
   cout << endl << "(1) ***** Test constructeur par defaut + display *******************************" << endl;
   {
     Event event;
@@ -216,7 +188,7 @@ void Essai3()
     event.getTiming().display();
     cout << endl;
   }
-/*
+
   cout << endl << "(3) ***** Test du constructeur d'initialisation ********************************" << endl;
   {
     Event event(2,"Cinema avec les potos");
@@ -246,13 +218,11 @@ void Essai3()
     event1.display();
     cout << endl << endl;
   }
-  */
 }
 
 /*******************************************************************************************************/
 /*** Tests des variables statiques utiles **************************************************************/
 /*******************************************************************************************************/
-/*
 void Essai4()
 {
   cout << endl << "(1) ***** Tests de base des jours de la semaine ********************************" << endl;
@@ -299,4 +269,3 @@ void Essai4()
   cout << "e3.currentCode = " << e3.currentCode << endl << endl;
 }
 
-*/
