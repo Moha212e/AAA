@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <iostream>
 using namespace std;
-//#include "Event.h"
+#include "Event.h"
 
 // Quelques conseils avant de commencer...
 // * N'oubliez pas de tracer (cout << ...) tous les constructeurs et le destructeur !!! Ca, c'est pas un conseil,
@@ -38,6 +38,7 @@ int main()
     Event event(2,"Cinema avec les potos");
     event.display();
   }
+  
 
   cout << endl << "(4) ***** Test du constructeur de copie ****************************************" << endl;
   {
