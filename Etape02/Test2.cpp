@@ -5,13 +5,13 @@ using namespace std;
 #include "Timing.h"
 #include "Event.h"
 
-using namespace planning;
+//using namespace planning;
 
 int  Menu();
 void Essai1();
 void Essai2();
-void Essai3();
-void Essai4();
+//void Essai3();
+//void Essai4();
 
 int main(int argc,char* argv[])
 {
@@ -26,8 +26,8 @@ int main(int argc,char* argv[])
     {
       case 1 : Essai1(); break;
       case 2 : Essai2(); break;
-      case 3 : Essai3(); break;
-      case 4 : Essai4(); break;
+      //case 3 : Essai3(); break;
+      //case 4 : Essai4(); break;
       default : fini = true ; break;
     }
   }
@@ -77,6 +77,7 @@ void Essai1()
     cout << endl << "heure : " << instant.getHour() << endl;
     cout << "Minute : " << instant.getMinute() << endl;
   }
+  
 
   cout << endl << "(3) ***** Test du constructeur d'initialisation de Time (instant) **************" << endl;
   {
@@ -84,6 +85,7 @@ void Essai1()
     instant.display();
     cout << endl;
   }
+  
 
   cout << endl << "(4) ***** Test du constructeur d'initialisation de Time (duree) ****************" << endl;
   {
@@ -91,6 +93,7 @@ void Essai1()
     duration.display();
     cout << endl;
   }
+  
 
   cout << endl << "(5) ***** Test du constructeur de copie de Time *******************************" << endl;
   {
@@ -101,11 +104,13 @@ void Essai1()
     h2.display();
     cout << endl;
   }
+  
 }
 
 /*******************************************************************************************************/
 /*** Tests de la classe Timing (Agregation par valeur avec un objet Time) ******************************/
 /*******************************************************************************************************/
+
 void Essai2()
 {
   cout << endl << "(1) ***** Test du constructeur par defaut de Timing ****************************" << endl;
@@ -114,6 +119,7 @@ void Essai2()
     t.display();
     cout << endl;
   }
+  
 
   cout << endl << "(2) **** Test des setters/getters **********************************************" << endl;
   {
@@ -131,7 +137,7 @@ void Essai2()
     t.getDuration().display();
     cout << endl;
   }
-
+/*
   cout << endl << "(3) ***** Test du constructeur d'initialisation de Timing **********************" << endl;
   {
     Timing t("Vendredi",Time(13,30),Time(120));
@@ -160,11 +166,14 @@ void Essai2()
     t1.display();
     cout << endl << endl;
   }
+  
+  */
 }
 
 /*******************************************************************************************************/
 /*** Tests de la classe Event (Agregation par reference d'un objet Timing) *****************************/
 /*******************************************************************************************************/
+/*
 void Essai3()
 {
   cout << endl << "(1) ***** Test constructeur par defaut + display *******************************" << endl;
@@ -223,8 +232,10 @@ void Essai3()
 /*******************************************************************************************************/
 /*** Tests des variables statiques utiles **************************************************************/
 /*******************************************************************************************************/
+/*
 void Essai4()
 {
+  
   cout << endl << "(1) ***** Tests de base des jours de la semaine ********************************" << endl;
   cout << "Premier jour de la semaine : " << Timing::MONDAY << endl;
   // ne pas oublier les autres jours de la semaine...
@@ -268,4 +279,5 @@ void Essai4()
   cout << "e2.currentCode = " << e2.currentCode << endl;
   cout << "e3.currentCode = " << e3.currentCode << endl << endl;
 }
+*/
 
