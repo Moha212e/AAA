@@ -8,6 +8,8 @@ class Event
 private:
     int code;
     char *title;
+    Timing timing;
+
 
 public:
     Event();
@@ -19,7 +21,15 @@ public:
     const char *getTitle();
     void display();
     Event(Event &e);
+    void setTiming(const Timing &t);
+    Timing getTiming();
 };
+Timing Event::getTiming(){
+    return timing;
+}
+void Event::setTiming(const Timing &t) {
+    timing = t;
+}
 Event::Event(Event &e)
 {
     title = nullptr;
@@ -78,4 +88,5 @@ void Event::display()
 {
     cout << "Titre => " << title << "\n";
     cout << "Code  => " << code << "\n";
+    timing.display();
 }

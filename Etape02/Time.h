@@ -18,18 +18,15 @@ public:
     int getMinute();
     Time(int h, int m);
 };
-Time::Time(int d)
-{
-    int h = 0;
 
-    while (d > 60)
-    {
-        d = d%60;
-        h++;
-    }
+Time::Time(int d) {
+    int h = d / 60;
+    int m = d % 60;
+
     setHour(h);
-    setMinute(d);
+    setMinute(m);
 }
+
 Time::Time(int h, int m)
 {
     setMinute(m);
