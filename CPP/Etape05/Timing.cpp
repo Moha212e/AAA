@@ -43,7 +43,7 @@ namespace planning
         if (d != MONDAY && d != TUESDAY && d != WEDNESDAY && d != THURSDAY &&
             d != FRIDAY && d != SATURDAY && d != SUNDAY)
         {
-            throw TimingException("Invalid day", TimingException::INVALID_DAY);
+            throw TimingException("jour erreone", TimingException::INVALID_DAY);
         }
         day = d;
     }

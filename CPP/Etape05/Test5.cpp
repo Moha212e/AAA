@@ -3,9 +3,8 @@
 #include "Time.h"
 #include "Timing.h"
 #include "Event.h"
-#include "TimingException.h"
 #include "TimeException.h"
-
+#include "TimingException.h"
 using namespace std;
 using namespace planning;
 
@@ -24,7 +23,6 @@ void Essai11();
 
 int main(int argc, char *argv[])
 {
-
   int choix;
   bool fini = false;
 
@@ -119,68 +117,50 @@ int Menu()
 void Essai1()
 {
   cout << "----- 1. Test des constructeurs, setXXX() de la classe Time --------" << endl;
+  // A COMPLETER : Traitez l'exception susceptible d'etre lancee par le bloc de code suivant (try...catch)
+  // en particulier : afficher le message de l'exception lancee et le code de l'erreur
 
+  // ...
   try
   {
-    int hour, minute;
-    cout << "Entrez l'heure h1 :" << endl;
-    cout << "Heure  : ";
-    cin >> hour;
-    cin.ignore();
-    cout << "Minute : ";
-    cin >> minute;
-    cin.ignore();
+    {
 
-    Time h1(hour, minute);
-    cout << "--> h1 = " << h1 << endl
-         << endl;
+      int hour, minute;
+      cout << "Entrez l'heure h1 :" << endl;
+      cout << "Heure  : ";
+      cin >> hour;
+      cin.ignore();
+      cout << "Minute : ";
+      cin >> minute;
+      cin.ignore();
+      Time h1(hour, minute); // !!!
+      cout << "--> h1 = " << h1 << endl
+           << endl;
 
-    cout << "On modifie l'heure de h1 : " << endl;
-    cout << "Nouvelle heure : ";
-    cin >> hour;
+      cout << "On modifie l'heure de h1 : " << endl;
+      cout << "Nouvelle heure : ";
+      cin >> hour;
+      h1.setHour(hour); // !!!
+      cout << "--> h1 = " << h1 << endl
+           << endl;
 
-    h1.setHour(hour);
-    cout << "--> h1 = " << h1 << endl
-         << endl;
+      cout << "On modifie les minutes de h1 : " << endl;
+      cout << "Nouvelles minutes : ";
+      cin >> minute;
+      h1.setMinute(minute); // !!!
+      cout << "--> h1 = " << h1 << endl
+           << endl;
 
-    cout << "On modifie les minutes de h1 : " << endl;
-    cout << "Nouvelles minutes : ";
-    cin >> minute;
-    h1.setMinute(minute);
-    cout << "--> h1 = " << h1 << endl
-         << endl;
-
-    cout << "Entrez la duree d1 : " << endl;
-    int minutes;
-    cout << "Duree en minutes : ";
-    cin >> minutes;
-    cin.ignore();
-
-    Time d1(minutes);
-    cout << "--> d1 = " << d1 << endl
-         << endl;
-  }
-  catch (TimeException &e)
-  {
-    cout << "Erreur : " << e.getMessage() << ", Code : " << e.getCode() << endl;
-  }
-  cout << endl;
-}
-
-void Essai2()
-{
-  cout << "----- 2. Test de l'operateur (Time + int) de la classe Time --------" << endl;
-
-  try
-  {
-    Time h(15, 30);
-    cout << "h = Time(15,30)" << endl;
-    int duration;
-    cout << "Entrez une duree en minutes : ";
-    cin >> duration;
-    h = h + duration;
-    cout << "Apres addition (h = h + duration) --> " << h << endl
-         << endl;
+      cout << "Entrez la duree d1 : " << endl;
+      int minutes;
+      cout << "Duree en minutes : ";
+      cin >> minutes;
+      cin.ignore();
+      Time d1(minutes); // !!!
+      cout << "--> d1 = " << d1 << endl
+           << endl;
+    }
+    // ...
   }
   catch (TimeException &e)
   {
@@ -191,7 +171,37 @@ void Essai2()
 }
 
 /**********************************************************************************************/
+void Essai2()
+{
+  cout << "----- 2. Test de l'operateur (Time + int) de la classe Time --------" << endl;
+  // A COMPLETER : Traitez l'exception susceptible d'etre lancee par le bloc de code suivant (try...catch)
+  // en particulier : afficher le message de l'exception lancee et le code de l'erreur
 
+  // ...
+  try
+  {
+    {
+      Time h(15, 30);
+      cout << "h = Time(15,30)" << endl;
+      int duration;
+      cout << "Entrez une duree en minutes : ";
+      cin >> duration;
+      h = h + duration;
+      cout << "Apres addition (h = h + duration) --> " << h << endl
+           << endl;
+    }
+  }
+  catch (TimeException &e)
+  {
+
+    cout << "Erreur : " << e.getMessage() << ", Code : " << e.getCode() << endl;
+  }
+  // ...
+
+  cout << endl;
+}
+
+/**********************************************************************************************/
 void Essai3()
 {
   cout << "----- 3. Test de l'operateur (int + Time) de la classe Time --------" << endl;
@@ -215,6 +225,7 @@ void Essai3()
   }
   catch (TimeException &e)
   {
+
     cout << "Erreur : " << e.getMessage() << ", Code : " << e.getCode() << endl;
   }
   // ...
@@ -223,7 +234,6 @@ void Essai3()
 }
 
 /**********************************************************************************************/
-
 void Essai4()
 {
   cout << "----- 4. Test de l'operateur (Time - int) de la classe Time --------" << endl;
@@ -246,6 +256,7 @@ void Essai4()
   }
   catch (TimeException &e)
   {
+
     cout << "Erreur : " << e.getMessage() << ", Code : " << e.getCode() << endl;
   }
   // ...
@@ -254,7 +265,6 @@ void Essai4()
 }
 
 /**********************************************************************************************/
-
 void Essai5()
 {
   cout << "----- 5. Test de l'operateur (int - Time) de la classe Time --------" << endl;
@@ -277,7 +287,6 @@ void Essai5()
   }
   catch (TimeException &e)
   {
-    cout << "Erreur : " << e.getMessage() << ", Code : " << e.getCode() << endl;
   }
   // ...
 
@@ -285,7 +294,6 @@ void Essai5()
 }
 
 /**********************************************************************************************/
-
 void Essai6()
 {
   cout << "----- 6. Test de l'operateur (Time + Time) de la classe Time --------" << endl;
@@ -318,7 +326,6 @@ void Essai6()
 }
 
 /**********************************************************************************************/
-
 void Essai7()
 {
   cout << "----- 7. Test de l'operateur (Time - Time) de la classe Time --------" << endl;
@@ -341,6 +348,7 @@ void Essai7()
   }
   catch (TimeException &e)
   {
+
     cout << "Erreur : " << e.getMessage() << ", Code : " << e.getCode() << endl;
   }
   // ...
@@ -349,7 +357,6 @@ void Essai7()
 }
 
 /**********************************************************************************************/
-
 void Essai8()
 {
   cout << "----- 8. Test de l'operateur ++ de la classe Time --------" << endl;
@@ -371,6 +378,7 @@ void Essai8()
   }
   catch (TimeException &e)
   {
+
     cout << "Erreur : " << e.getMessage() << ", Code : " << e.getCode() << endl;
   }
   // ...
@@ -379,7 +387,6 @@ void Essai8()
 }
 
 /**********************************************************************************************/
-
 void Essai9()
 {
   cout << "----- 9. Test de l'operateur -- de la classe Time --------" << endl;
@@ -390,7 +397,6 @@ void Essai9()
   try
   {
     {
-
       Time h;
       cout << "Entrez l'heure h = ";
       cin >> h;
@@ -410,7 +416,6 @@ void Essai9()
 }
 
 /**********************************************************************************************/
-
 void Essai10()
 {
   cout << "----- 10. Test de la methode setDay() de la classe Timing --------" << endl;
@@ -431,6 +436,7 @@ void Essai10()
   }
   catch (TimingException &e)
   {
+
     cout << "Erreur : " << e.getMessage() << ", Code : " << e.getCode() << endl;
   }
   // ...
@@ -439,69 +445,55 @@ void Essai10()
 }
 
 /**********************************************************************************************/
-
 void Essai11()
 {
   cout << "----- 11. Gestion de plusieurs exceptions simultanement ---" << endl;
+  // A COMPLETER : Traitez TOUTES les exceptions susceptible d'etre lancee par le bloc de code suivant (try...catch)
 
+  // ...
   try
   {
-    Timing t;
-    string day;
-    Time hour;
-    int d;
-
-    cout << "Encodez un timing :" << endl;
-
-    cout << "Jour = ";
-    getline(cin, day);
-    t.setDay(day);
-
-    cout << "Heure = ";
-    cin >> hour;
-    t.setStart(hour);
-
-    cout << "Duree en minutes = ";
-    cin >> d;
-    cin.ignore();
-    t.setDuration(Time(d));
-
-    cout << endl
-         << "Timing encode : ";
-    t.display();
-    cout << endl;
-
-    Event e(1, "Theorie C++");
-    cout << "Voici un Event non planifie : ";
-    e.display();
-
-    cout << "Voulez-vous planifier cet Event (o/n) ? ";
-    char ch;
-    cin >> ch;
-    cin.ignore();
-
-    if (ch == 'o')
     {
-      e.setTiming(t);
+      Timing t;
+      string day;
+      Time hour;
+      int d;
+      cout << "Encodez un timing :" << endl;
+      cout << "Jour = ";
+      getline(cin, day);
+      t.setDay(day);
+      cout << "Heure = ";
+      cin >> hour;
+      t.setStart(hour);
+      cout << "Duree en minutes = ";
+      cin >> d;
+      cin.ignore();
+      t.setDuration(Time(d));
+      cout << endl
+           << "Timing encode : ";
+      t.display();
+      cout << endl;
+      Event e(1, "Theorie C++");
+      cout << "Voici un Event non planifie : ";
+      e.display();
+      cout << "Voulez-vous planifier cet Event (o/n) ? ";
+      char ch;
+      cin >> ch;
+      cin.ignore();
+      if (ch == 'o')
+        e.setTiming(t);
+      cout << "Voici le Timing de l'Event planifie : ";
+      e.getTiming().display(); // !!!
     }
+  }
+  catch (TimeException &e)
+  {
+    cout << "Erreur : " << e.getMessage() << ", Code : " << e.getCode() << endl;
+  }
+  catch (TimingException &ee)
+  {
+    cout << "Erreur : " << ee.getMessage() << ", Code : " << ee.getCode() << endl;
+  }
 
-    cout << "Voici le Timing de l'Event planifie : ";
-    e.getTiming().display();
-  }
-  catch (const TimeException &e)
-  {
-    cout << "Erreur : " << e.getMessage() << ", Code : " << e.getCode() << endl;
-  }
-  catch (const TimingException &e)
-  {
-    cout << "Erreur : " << e.getMessage() << ", Code : " << e.getCode() << endl;
-  }
-  catch (const std::exception &e)
-  {
-    cout << "Erreur : " << e.what() << endl;
-  }
-  catch (...)
-  {
-    cout << "Erreur inconnue." << endl;
-  }
+  // ...
 }
