@@ -1,8 +1,11 @@
 #ifndef MAINWINDOWEX4_H
 #define MAINWINDOWEX4_H
-
+#include <signal.h>
 #include <QMainWindow>
-
+#include <sys/types.h>
+#include <sys/wait.h>
+#include <unistd.h>
+#include <cstdio>
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindowEx4; }
 QT_END_NAMESPACE

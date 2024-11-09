@@ -67,7 +67,7 @@ namespace planning
 
     // Overloaded operators
     Time Time::operator+(Time t)
-    {
+    {/*
         Time result;
         result.hour = hour + t.hour;
         result.minute = minute + t.minute;
@@ -85,6 +85,8 @@ namespace planning
         }
 
         return result;
+*/
+        return Time(hour*60 + t.hour*60 + minute + t.minute);
     }
 
     Time &Time::operator=(const Time &t)

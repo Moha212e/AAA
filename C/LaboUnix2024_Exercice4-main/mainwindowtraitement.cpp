@@ -14,6 +14,8 @@ MYSQL_ROW  tuple;
 
 void handlerSIGALRM(int sig);
 // TO DO : HandlerSIGUSR1
+void handlerSIGUSR1(int sig);
+
 
 int  compteur = 0;
 
@@ -101,4 +103,6 @@ void handlerSIGALRM(int sig)
   alarm(1);
 }
 
-//TO DO : HandlerSIGUSR1
+void handlerSIGUSR1(int s){
+  exit(compteur);
+}
