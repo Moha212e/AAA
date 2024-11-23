@@ -8,7 +8,6 @@ using namespace std;
 
 int  Menu();
 void Essai1();
-
 void Essai2();
 void Essai3();
 void Essai4();
@@ -30,7 +29,6 @@ int main(int argc,char* argv[])
       case 3 : Essai3(); break;
       case 4 : Essai4(); break;
       case 5 : Essai5(); break;
-      
       default : fini = true ; break;
     }
   }
@@ -206,7 +204,6 @@ void Essai4()
 /*********************************************************************************************/
 // A FAIRE : normalement rien dans vos classes...
 //           juste comprendre et tester le code ci-dessous
-
 
 void Essai5()
 {

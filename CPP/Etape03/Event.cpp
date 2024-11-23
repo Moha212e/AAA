@@ -85,7 +85,7 @@ namespace planning
     {
         return title;
     }
-    Timing Event::getTiming() const
+    const Timing Event::getTiming() const
     {
         return *timing;
     }

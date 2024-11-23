@@ -2,8 +2,8 @@
 #include <iostream>
 #include <cstdlib>     
 #include "Time.h" 
-#ifndef TIMING_H  // If TIMING_H is not defined
-#define TIMING_H  // Define TIMING_H
+#ifndef TIMING_H 
+#define TIMING_H 
 using namespace std;   
 
 namespace planning

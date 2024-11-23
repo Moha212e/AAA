@@ -27,9 +27,9 @@ int main(int argc,char* argv[])
     switch(choix)
     {
       case 1 : Essai1(); break;
-      case 2 : Essai2(); break;/*
+      case 2 : Essai2(); break;
       case 3 : Essai3(); break;
-      case 4 : Essai4(); break;*/
+      case 4 : Essai4(); break;
       default : fini = true ; break;
     }
   }
@@ -57,7 +57,6 @@ int Menu()
 }
 
 /*********************************************************************************************/
-
 void Essai1()  // Attention : utilisez les flux texte (<< et >>) !!!!
 {
   cout << "----- 1. Sérialisation/Désérialisation d'un objet de la classe Time ------" << endl;
@@ -84,7 +83,6 @@ void Essai1()  // Attention : utilisez les flux texte (<< et >>) !!!!
 }
 
 /*********************************************************************************************/
-
 void Essai2()  // Attention : utilisez les flux texte (<< et >>) !!!!
 {
   cout << "----- 2. Sérialisation/Désérialisation d'un objet de la classe Classroom ------" << endl;
@@ -109,7 +107,6 @@ void Essai2()  // Attention : utilisez les flux texte (<< et >>) !!!!
 }
 
 /*********************************************************************************************/
-/*
 void Essai3()  // Attention : utilisez les flux texte (<< et >>) !!!!
 {
   cout << "----- 3. Sérialisation/Désérialisation d'un objet de la classe Timing ------" << endl;
@@ -135,7 +132,7 @@ void Essai3()  // Attention : utilisez les flux texte (<< et >>) !!!!
   cout << endl;
 }
 
-/*********************************************************************************************//*
+/*********************************************************************************************/
 void Essai4()  // Attention : utilisez les flux texte (<< et >>) !!!!
 {
   cout << "----- 4. Sérialisation/Désérialisation d'un objet de la classe Event ------" << endl;
@@ -180,4 +177,3 @@ void Essai4()  // Attention : utilisez les flux texte (<< et >>) !!!!
   E.display();
   cout << endl;
 }
-*/

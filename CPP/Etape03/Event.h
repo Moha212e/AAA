@@ -1,35 +1,32 @@
-
 #ifndef EVENT_H
 #define EVENT_H
-#include <iostream>
-#include <string.h>
-using namespace std;
+#include <stdio.h>
 #include "Timing.h"
+using namespace std;
+#include <string.h>
+#include <iostream>
 namespace planning
 {
-
     class Event
     {
     private:
         int code;
-        char* title;
-        Timing* timing;
+        char *title;
+        Timing *timing;
+
     public:
         static int currentCode;
         Event();
-        Event(int c, const char* t);
-        Event(const Event& e);
-        ~Event();
-
-        void setCode(int c);
-        void setTitle(const char* t);
-        void setTiming(const Timing& tm);
-
-        Timing getTiming() const;
+        Event(int, const char *);
         int getCode() const;
-        const char* getTitle() const;
-
+        const char *getTitle() const;
+        void setCode(int);
+        void setTitle(const char *);
+        ~Event();
         void display() const;
+        Event(const Event &);
+        void setTiming(const Timing &);
+        const Timing getTiming() const;
     };
 }
 #endif

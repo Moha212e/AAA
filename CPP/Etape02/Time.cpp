@@ -34,15 +34,6 @@ namespace planning
     {
     }
 
-
-
-
-
-
-
-
-
-    
     void Time::setHour(int h)
     {
         hour = h;

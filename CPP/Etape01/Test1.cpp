@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <iostream>
 using namespace std;
+
 #include "Event.h"
 
 // Quelques conseils avant de commencer...
@@ -38,7 +39,6 @@ int main()
     Event event(2,"Cinema avec les potos");
     event.display();
   }
-  
 
   cout << endl << "(4) ***** Test du constructeur de copie ****************************************" << endl;
   {

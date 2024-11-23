@@ -80,20 +80,22 @@ namespace planning
     {
         return compT(t) == 0;
     }
-    int Timing::compT(const Timing &t)
+    int Timing::compT(const Timing &x)
     {
-        if (day < t.day)
-            return -1;
-        if (day > t.day)
+        if(x.day == "Lundi")
             return 1;
-        if (start < t.start)
-            return -1;
-        if (start > t.start)
-            return 1;
-        if (duration < t.duration)
-            return -1;
-        if (duration > t.duration)
-            return 1;
-        return 0;
+        if(x.day == "Mardi")
+            return 2;
+        if(x.day == "Mercredi")
+            return 3;
+        if(x.day == "Jeudi")
+            return 4;
+        if(x.day == "Vendredi")
+            return 5;
+        if(x.day == "Samedi")
+            return 6;
+        if(x.day == "Dimanche")
+            return 7;
+        return -1; //erreur
     }
 }
