@@ -1,0 +1,108 @@
+(PERE) Je realise une tache...
+je suis le fils 1 :32824
+---g2202---
+(Traitement 32824) Connection a la BD
+(Traitement 32824) Armement du signal SIGALRM
+(Traitement 32824) Armement du signal SIGUSR1
+(Traitement 32824) Reception du signal SIGALRM (14)
+---bbb001---
+(Traitement 32824) Reception du signal SIGALRM (14)
+---bbb002---
+(Traitement 32824) Reception du signal SIGALRM (14)
+---bbb003---
+(Traitement 32824) Reception du signal SIGALRM (14)
+---bbb004---
+(Traitement 32824) Reception du signal SIGALRM (14)
+---bbb005---
+(Traitement 32824) Reception du signal SIGALRM (14)
+---bbb006---
+(Traitement 32824) Reception du signal SIGALRM (14)
+
+J’ai recu le signal no 17
+
+(PERE) Suppression du fils 32824 de la table des processus
+(PERE) Le fils 32824 s’est termine par un exit(6)
+---6---
+(PERE) Je realise une tache...
+je suis le fils 1 :33602
+---g2201---
+(Traitement 33602) Connection a la BD
+(Traitement 33602) Armement du signal SIGALRM
+(Traitement 33602) Armement du signal SIGUSR1
+(Traitement 33602) Reception du signal SIGALRM (14)
+---aaa001---
+(Traitement 33602) Reception du signal SIGALRM (14)
+---aaa002---
+(Traitement 33602) Reception du signal SIGALRM (14)
+---aaa003---
+(Traitement 33602) Reception du signal SIGALRM (14)
+---aaa004---
+(Traitement 33602) Reception du signal SIGALRM (14)
+---aaa005---
+(Traitement 33602) Reception du signal SIGALRM (14)
+---aaa006---
+(Traitement 33602) Reception du signal SIGALRM (14)
+---aaa007---
+(Traitement 33602) Reception du signal SIGALRM (14)
+---aaa008---
+(Traitement 33602) Reception du signal SIGALRM (14)
+---aaa009---
+(Traitement 33602) Reception du signal SIGALRM (14)
+---aaa010---
+(Traitement 33602) Reception du signal SIGALRM (14)
+
+J’ai recu le signal no 17
+
+(PERE) Suppression du fils 33602 de la table des processus
+(PERE) Le fils 33602 s’est termine par un exit(10)
+---10---
+Clic sur le bouton Demarrer Traitements
+(PERE) Je realise une tache...
+je suis le fils 1 :33621
+---g2201---
+(Traitement 33621) Connection a la BD
+(Traitement 33621) Armement du signal SIGALRM
+(Traitement 33621) Armement du signal SIGUSR1
+(Traitement 33621) Reception du signal SIGALRM (14)
+---aaa001---
+(Traitement 33621) Reception du signal SIGALRM (14)
+---aaa002---
+Clic sur le bouton Annuler1
+(Traitement 33621) Reception du signal SIGUSR1 (10) avec le compteur actuel :2.
+
+J’ai recu le signal no 17
+
+(PERE) Suppression du fils 33621 de la table des processus
+(PERE) Le fils 33621 s’est termine par un exit(2)
+---2---
+Clic sur le bouton Demarrer Traitements
+(PERE) Je realise une tache...
+je suis le fils 1 :33628
+---g2201---
+(Traitement 33628) Connection a la BD
+(Traitement 33628) Armement du signal SIGALRM
+(Traitement 33628) Armement du signal SIGUSR1
+(Traitement 33628) Reception du signal SIGALRM (14)
+---aaa001---
+(Traitement 33628) Reception du signal SIGALRM (14)
+---aaa002---
+(Traitement 33628) Reception du signal SIGALRM (14)
+---aaa003---
+(Traitement 33628) Reception du signal SIGALRM (14)
+---aaa004---
+(Traitement 33628) Reception du signal SIGALRM (14)
+---aaa005---
+(Traitement 33628) Reception du signal SIGALRM (14)
+---aaa006---
+(Traitement 33628) Reception du signal SIGALRM (14)
+---aaa007---
+(Traitement 33628) Reception du signal SIGALRM (14)
+---aaa008---
+Clic sur le bouton Annuler1
+(Traitement 33628) Reception du signal SIGUSR1 (10) avec le compteur actuel :8.
+
+J’ai recu le signal no 17
+
+(PERE) Suppression du fils 33628 de la table des processus
+(PERE) Le fils 33628 s’est termine par un exit(8)
+---8---

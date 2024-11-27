@@ -1,8 +1,8 @@
-# Exercice 3 de "Développement système en C sous Linux"
+# Exercice 4 de "Développement Système en C sous Linux"
 
 Objectifs :
 * Se familiariser avec la création de processus (fork, exec, exit et wait).
-* Se familiariser avec l’utilisation de la librairie C d’accès à une base de données MySql.
-* Création d’un fichier de traces.
-* Et toujours : création d’un makefile
+* Se familiariser avec l’envoi et l’armement des signaux (kill et sigaction).
+* Et toujours : création d’un makefile et d’un fichier de traces, se familiariser avec la librairie C d’accès à MySql.
+
 

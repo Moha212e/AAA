@@ -1,69 +1,24 @@
-# Created by https://www.toptal.com/developers/gitignore/api/c,c++,sublimetext,visualstudiocode
-# Edit at https://www.toptal.com/developers/gitignore?templates=c,c++,sublimetext,visualstudiocode
+# Created by https://www.toptal.com/developers/gitignore/api/c++,sublimetext,visualstudiocode
+# Edit at https://www.toptal.com/developers/gitignore?templates=c++,sublimetext,visualstudiocode
 
-### C ###
+### C++ ###
 # Prerequisites
 *.d
 
-# Object files
+# Compiled Object files
+*.slo
+*.lo
 *.o
-*.ko
 *.obj
-*.elf
-
-# Linker output
-*.ilk
-*.map
-*.exp
 
 # Precompiled Headers
 *.gch
 *.pch
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
-
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
-
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
-
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
-
-### C++ ###
-# Prerequisites
-
-# Compiled Object files
-*.slo
-
-# Precompiled Headers
-
 # Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
 
 # Fortran module files
 *.mod
@@ -71,8 +26,14 @@ dkms.conf
 
 # Compiled Static libraries
 *.lai
+*.la
+*.a
+*.lib
 
 # Executables
+*.exe
+*.out
+*.app
 
 ### SublimeText ###
 # Cache files for Sublime Text
@@ -132,4 +93,4 @@ GitHub.sublime-settings
 # Ignore code-workspaces
 *.code-workspace
 
-# End of https://www.toptal.com/developers/gitignore/api/c,c++,sublimetext,visualstudiocode
+# End of https://www.toptal.com/developers/gitignore/api/c++,sublimetext,visualstudiocode
