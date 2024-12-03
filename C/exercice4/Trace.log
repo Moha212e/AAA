@@ -106,3 +106,105 @@ J’ai recu le signal no 17
 (PERE) Suppression du fils 33628 de la table des processus
 (PERE) Le fils 33628 s’est termine par un exit(8)
 ---8---
+je suis le fils 1 :87759
+(PERE) Je realise une tache...
+je suis le fils 2 :87760
+je suis le fils 3 :87761
+---g2203---
+(Traitement 87759) Connection a la BD
+---g2202---
+(Traitement 87761) Connection a la BD
+(Traitement 87759) Armement du signal SIGALRM
+(Traitement 87759) Armement du signal SIGUSR1
+(Traitement 87761) Armement du signal SIGALRM
+(Traitement 87761) Armement du signal SIGUSR1
+libGL error: MESA-LOADER: failed to open swrast: /usr/lib64/dri/swrast_dri.so: undefined symbol: amdgpu_query_video_caps_info (search paths /usr/lib64/dri)
+libGL error: failed to load driver: swrast
+libGL error: MESA-LOADER: failed to open swrast: /usr/lib64/dri/swrast_dri.so: undefined symbol: amdgpu_query_video_caps_info (search paths /usr/lib64/dri)
+libGL error: failed to load driver: swrast
+---g2201---
+(Traitement 87760) Connection a la BD
+(Traitement 87760) Armement du signal SIGALRM
+(Traitement 87760) Armement du signal SIGUSR1
+libGL error: MESA-LOADER: failed to open swrast: /usr/lib64/dri/swrast_dri.so: undefined symbol: amdgpu_query_video_caps_info (search paths /usr/lib64/dri)
+libGL error: failed to load driver: swrast
+(Traitement 87759) Reception du signal SIGALRM (14)
+---ccc001---
+(Traitement 87761) Reception du signal SIGALRM (14)
+---bbb001---
+(Traitement 87760) Reception du signal SIGALRM (14)
+---aaa001---
+(Traitement 87759) Reception du signal SIGALRM (14)
+---ccc002---
+(Traitement 87761) Reception du signal SIGALRM (14)
+---bbb002---
+(Traitement 87760) Reception du signal SIGALRM (14)
+---aaa002---
+Clic sur le bouton Annuler2
+(Traitement 87760) Reception du signal SIGUSR1 (10) avec le compteur actuel :2.
+(Traitement 87759) Reception du signal SIGALRM (14)
+---ccc003---
+(Traitement 87761) Reception du signal SIGALRM (14)
+---bbb003---
+
+J’ai recu le signal no 17
+
+(PERE) Suppression du fils 87760 de la table des processus
+(PERE) Le fils 87760 s’est termine par un exit(2)
+---2---
+(Traitement 87759) Reception du signal SIGALRM (14)
+---ccc003---
+(Traitement 87761) Reception du signal SIGALRM (14)
+---bbb004---
+(Traitement 87759) Reception du signal SIGALRM (14)
+---ccc004---
+(Traitement 87761) Reception du signal SIGALRM (14)
+---bbb005---
+(Traitement 87759) Reception du signal SIGALRM (14)
+---ccc005---
+(Traitement 87761) Reception du signal SIGALRM (14)
+---bbb006---
+(Traitement 87759) Reception du signal SIGALRM (14)
+---ccc006---
+(Traitement 87761) Reception du signal SIGALRM (14)
+
+J’ai recu le signal no 17
+
+(PERE) Suppression du fils 87761 de la table des processus
+(PERE) Le fils 87761 s’est termine par un exit(6)
+---6---
+(Traitement 87759) Reception du signal SIGALRM (14)
+---ccc007---
+Clic sur le bouton Annuler3
+(Traitement 87759) Reception du signal SIGALRM (14)
+
+J’ai recu le signal no 17
+
+(PERE) Suppression du fils 87759 de la table des processus
+(PERE) Le fils 87759 s’est termine par un exit(8)
+---8---
+Clic sur le bouton Vider
+Clic sur le bouton Demarrer Traitements
+(PERE) Je realise une tache...
+je suis le fils 2 :87795
+je suis le fils 3 :87796
+je suis le fils 1 :87794
+
+J’ai recu le signal no 17
+
+(PERE) Suppression du fils 87796 de la table des processus
+(PERE) Le fils 87796 s’est termine par un exit(1)
+---1---
+
+J’ai recu le signal no 17
+
+(PERE) Suppression du fils 87794 de la table des processus
+(PERE) Le fils 87794 s’est termine par un exit(1)
+---1---
+
+J’ai recu le signal no 17
+
+(PERE) Suppression du fils 87795 de la table des processus
+(PERE) Le fils 87795 s’est termine par un exit(1)
+---1---
+Clic sur le bouton Quitter

@@ -25,7 +25,7 @@ public:
 	void setId(int i);
 
 	/*GETTER*/
-	int getId();
+	int getId() const;
 
 	/*METHODE*/
 	virtual string toString() const = 0;  //Méthode virtuelle pure

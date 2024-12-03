@@ -1,56 +1,59 @@
 #ifndef TIME_H
 #define TIME_H
 
-#include <iostream> // Pour l'utilisation de istream et ostream
+#include <iostream> // For using istream and ostream
 
 namespace planning
 {
     class Time
     {
     private:
-        int hour;   // Heures
-        int minute; // Minutes
-        int comptH(const Time &t); // Méthode privée de comparaison
+        int hour;   // The hour part of time (0 to 23)
+        int minute; // The minute part of time (0 to 59)
+        
+        // Private helper method for comparing two Time objects
+        int comptH(const Time &t); 
 
     public:
-        // Constructeurs et destructeur
-        Time();
-        Time(int d); // Constructeur prenant en paramètre des minutes totales
-        Time(int h, int m); // Constructeur avec heures et minutes
-        ~Time();
+        // Constructors and Destructor
+        Time();          // Default constructor (00:00)
+        Time(int d);     // Constructor that takes total minutes
+        Time(int h, int m); // Constructor that takes hours and minutes
+        ~Time();         // Destructor
 
-        // Accesseurs et mutateurs
-        int getHour()const;   // Obtenir l'heure
-        int getMinute()const; // Obtenir les minutes
-        void setHour(int h);   // Définir l'heure
-        void setMinute(int m); // Définir les minutes
+        // Accessor (getter) and mutator (setter) methods
+        int getHour() const;    // Get the hour
+        int getMinute() const;  // Get the minute
+        void setHour(int h);    // Set the hour
+        void setMinute(int m);  // Set the minute
 
-        void display() const; // Méthode d'affichage des informations
+        // Method to display time
+        void display() const; 
 
-        // Surcharge des opérateurs arithmétiques
-        Time operator+(Time t);   // Addition de deux objets Time
-        Time operator++(int);     // Incrémentation post-fixée
-        Time operator++();        // Incrémentation pré-fixée
-        Time operator--();        // Décrémentation pré-fixée
-        Time operator--(int);     // Décrémentation post-fixée
+        // Operator overloads
+        Time operator+(Time t);   // Addition of two Time objects
+        Time operator++(int);     // Postfix increment operator
+        Time operator++();        // Prefix increment operator
+        Time operator--();        // Prefix decrement operator
+        Time operator--(int);     // Postfix decrement operator
 
-        // Surcharge de l'opérateur d'assignation
+        // Assignment operator
         Time &operator=(const Time &t);
 
-        // Surcharge des opérateurs pour la soustraction
-        friend Time operator+(int n, const Time &t); // Ajout d'un entier à un objet Time
-        Time operator-(int m);                       // Soustraction d'un entier
-        friend Time operator-(int m, const Time &t); // Soustraction avec un entier à gauche
-        Time operator-(const Time &t2);              // Soustraction de deux objets Time
+        // Subtraction operators
+        friend Time operator+(int n, const Time &t); // Adding an integer to a Time object (in minutes)
+        Time operator-(int m);                       // Subtracting an integer from Time (in minutes)
+        friend Time operator-(int m, const Time &t); // Subtracting Time from an integer (in minutes)
+        Time operator-(const Time &t2);              // Subtracting two Time objects
 
-        // Surcharge des opérateurs de comparaison
-        int operator<(const Time &t);
-        int operator>(const Time &t);
-        int operator==(const Time &t);
+        // Comparison operators
+        int operator<(const Time &t);   // Less than operator
+        int operator>(const Time &t);   // Greater than operator
+        int operator==(const Time &t);  // Equality operator
 
-        // Surcharge des opérateurs de flux d'entrée/sortie
-        friend std::istream &operator>>(std::istream &s, Time &t);  // Flux d'entrée
-        friend std::ostream &operator<<(std::ostream &s, const Time &t); // Flux de sortie
+        // Input/output stream overloads for reading and printing Time
+        friend std::istream &operator>>(std::istream &s, Time &t);  // Input stream
+        friend std::ostream &operator<<(std::ostream &s, const Time &t); // Output stream
     };
 }
 

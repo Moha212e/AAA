@@ -11,15 +11,9 @@ Classroom::Classroom() {
 }
 
 // Constructeur avec paramètres
-Classroom::Classroom(int i, string n, int s) {
-    Schedulable::setId(i);  // Initialiser l'ID via la classe de base
+Classroom::Classroom(int i, string n, int s):Schedulable(i) {
     setName(n);
     setSeatingCapacity(s);
-}
-
-// Fonction pour obtenir l'ID
-int Classroom::getId() const {
-    return Schedulable::getId();  // Utiliser la méthode de la classe de base
 }
 
 // Setters
@@ -43,20 +37,20 @@ int Classroom::getSeatingCapacity() const {
 // Méthode toString
 string Classroom::toString() const {
     ostringstream oss;
-    oss << name << " " << seatingCapacity;
+    oss << id << name << " " << seatingCapacity;
     return oss.str();
 }
 
 // Méthode tuple
 string Classroom::tuple() const {
     ostringstream oss;
-    oss << Schedulable::getId() << ";" << name << ";" << seatingCapacity;
+    oss << id << ";" << name << ";" << seatingCapacity;
     return oss.str();
 }
 
 // Opérateur d'assignation
 Classroom &Classroom::operator=(const Classroom &c) {
-    Schedulable::setId(c.getId());  // Copier l'ID de l'objet source
+    setId(c.getId());  // Copier l'ID de l'objet source
     setName(c.getName());
     setSeatingCapacity(c.getSeatingCapacity());
     return *this;

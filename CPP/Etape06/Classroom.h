@@ -18,7 +18,6 @@ public:
 
     string getName() const;
     int getSeatingCapacity() const;
-    int getId()const;
     string toString() const override;
     string tuple() const override;
 
