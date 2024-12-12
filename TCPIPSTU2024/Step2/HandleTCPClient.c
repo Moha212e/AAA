@@ -1,66 +1,48 @@
-#include "Requete.h"
-#include <stdio.h>
+#include <stdio.h>      /* for printf() and fprintf() */
+#include <sys/socket.h> /* for recv() and send() */
+#include <unistd.h>     /* for close() */
 #include <string.h>
-#include <unistd.h>
-#include <time.h> // Pour `time_t`
+#include "LibSer.h"
+#include "Requete.h"
+#include "LibSerHV.h"
+#include "data.h"
+#define RCVBUFSIZE 32   /* Size of receive buffer */
 
-void HandleTCPClient(int clntSocket) {
-    struct Requete clientRequest;    // Requête reçue du client
-    struct Requete serverResponse;  // Réponse à envoyer au client
 
-    // Lire la requête envoyée par le client
-    if (read(clntSocket, &clientRequest, sizeof(clientRequest)) <= 0) {
-        perror("read() failed");
-        close(clntSocket);
-        return;
+void HandleTCPClient(int clntSocket)
+{
+    int recvMsgSize, res;                    /* Size of received message */
+    struct Requete UneRequete ;
+    struct VehiculeHV UnRecord;
+    /* Receive message from client */
+    if ((recvMsgSize = recv(clntSocket, &UneRequete, sizeof (struct Requete), 0)) < 0)
+        DieWithError("recv() failed");
+    while(recvMsgSize>0) 
+    {
+
+         if((res = RechercheHV("VehiculesHV", UneRequete.Reference, &UnRecord)) == -1)
+         {
+            printf("Erreur vehicule pas trouve\n");
+         }
+         else{
+
+            UneRequete.Reference = UnRecord.Reference;
+            strcpy(UneRequete.Constructeur, UnRecord.Constructeur);
+            strcpy(UneRequete.Modele, UnRecord.Modele);
+            UneRequete.Quantite = UnRecord.Quantite;
+            strcpy(UneRequete.Couleur, UnRecord.Couleur);
+            UneRequete.Type = OK;
+            printf("Res : reference : %d %s %s \n", UneRequete.Reference, UneRequete.Constructeur, UneRequete.Modele);
+         }
+    /* Echo message back to client */
+    if (write(clntSocket, &UneRequete, recvMsgSize) != recvMsgSize)
+            DieWithError("send() failed");
+    
+    /* See if there is more data to receive */
+    if ((recvMsgSize = read(clntSocket, &UneRequete, sizeof (struct Requete))) < 0)
+            DieWithError("recv() failed");
     }
 
-    // Afficher la requête reçue pour le débogage
-    printf("Requête reçue :\n");
-    AfficheRequete(stdout, clientRequest);
-
-    // Initialiser la réponse
-    memset(&serverResponse, 0, sizeof(serverResponse));
-    serverResponse.Type = OK;  // Par défaut, la réponse est positive
-    serverResponse.Numero = clientRequest.Numero;
-    serverResponse.Date = time(NULL); // Date actuelle
-
-    // Traiter la requête selon le type
-    switch (clientRequest.Type) {
-        case Question:
-            snprintf(serverResponse.Constructeur, sizeof(serverResponse.Constructeur), "Toyota");
-            snprintf(serverResponse.Modele, sizeof(serverResponse.Modele), "Corolla");
-            serverResponse.Prix = 15000;
-            break;
-
-        case Achat:
-            if (clientRequest.Quantite > 0) {
-                snprintf(serverResponse.NomClient, sizeof(serverResponse.NomClient), "%s", clientRequest.NomClient);
-                serverResponse.NumeroFacture = 12345;  // Exemple de numéro de facture
-                serverResponse.Prix = clientRequest.Quantite * 15000;  // Exemple de calcul
-            } else {
-                serverResponse.Type = Fail;
-            }
-            break;
-
-        case Livraison:
-            snprintf(serverResponse.Constructeur, sizeof(serverResponse.Constructeur), "%s", clientRequest.Constructeur);
-            snprintf(serverResponse.Modele, sizeof(serverResponse.Modele), "%s", clientRequest.Modele);
-            break;
-
-        default:
-            serverResponse.Type = Fail;
-            break;
-    }
-
-    // Envoyer la réponse au client
-    if (write(clntSocket, &serverResponse, sizeof(serverResponse)) != sizeof(serverResponse)) {
-        perror("write() failed");
-    } else {
-        printf("Réponse envoyée :\n");
-        AfficheRequete(stdout, serverResponse);
-    }
-
-    // Fermer la connexion avec le client
-    close(clntSocket);
+    printf("Connexion Closed\n")  ;
+    close(clntSocket);    /* Close client socket */
 }

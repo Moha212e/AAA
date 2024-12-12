@@ -9,7 +9,7 @@
 
 #include "LibSer.h"  	/* Error handling function */
 #include "HandleTCPClient.h"   /* TCP client handling function */
-
+#include "LibSerHV.h"
 int main(int argc, char *argv[])
 {
     int servSock;                    /* Socket descriptor for server */

@@ -20,13 +20,11 @@ int main(int argc, char *argv[])
     struct sockaddr_in echoServAddr; /* Echo server address */
     unsigned short echoServPort;     /* Echo server port */
     char *servIP;                    /* Server IP address (dotted quad) */
-    char *echoString;                /* String to echo */
-    unsigned int echoStringLen;      /* Length of string to echo */
-    
+    int numero;
 
     struct Requete UneRequete ;
 
-    if ((argc < 4) || (argc > 4))    /* Test for correct number of arguments */
+    if ((argc < 3) || (argc > 3))    /* Test for correct number of arguments */
     {
        fprintf(stderr, "Usage: %s <Server IP> <Echo Port>] <Echo Word> \n",
                argv[0]);
@@ -35,8 +33,12 @@ int main(int argc, char *argv[])
 
     servIP = argv[1];             /* First arg: server IP address (dotted quad) */
     echoServPort = atoi(argv[2]);   /* Second arg: server Port */
-    echoString = argv[3];         /* Third arg: string to echo */
-
+    printf("Saisir la reference:");
+    scanf("%d", &numero);
+    UneRequete.Reference = numero;
+    UneRequete.Type = Question;
+    UneRequete.NumeroFacture = 0;
+    strcpy(UneRequete.NomClient, "");
     /* Create a reliable, stream socket using TCP */
     if ((sock = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP)) < 0)
         DieWithError("socket() failed");
@@ -51,9 +53,7 @@ int main(int argc, char *argv[])
     if (connect(sock, (struct sockaddr *) &echoServAddr, sizeof(echoServAddr)) < 0)
         DieWithError("connect() failed");
 
-    echoStringLen = strlen(echoString);          /* Determine input length */
 
-    strncpy(UneRequete.Chaine,echoString,sizeof(UneRequete.Chaine));
     /* Send the string to the server */
     if (write(sock, &UneRequete, sizeof(struct Requete)) != sizeof(struct Requete))
         DieWithError("send() sent a different number of bytes than expected");
@@ -63,8 +63,11 @@ int main(int argc, char *argv[])
     
     if ((read(sock, &UneRequete, sizeof(struct Requete))) <= 0)
             DieWithError("recv() failed or connection closed prematurely");
-        
-    printf("%s", UneRequete.Chaine);      /* Print the echo buffer */
+    
+
+    
+    AfficheRequete(stderr, UneRequete);
+    printf("Constructeur, Modele: %s, %s", UneRequete.Constructeur, UneRequete.Modele);
     printf("\n");                         /* Print a final linefeed */
 
     close(sock);
