@@ -21,9 +21,10 @@ int RechercheHV(char* NomFichier,int Reference ,struct VehiculeHV *UnRecord)
         }
     else
     {
+        fprintf(stderr,"RechercheHV>\n");
         fprintf(stderr,"Ouverture reussie VehiculeHV \n") ;
      
-        fprintf(stderr,"RechercheHV>\n");
+        
         
         while (Reference != UnRecord->Reference)
         {

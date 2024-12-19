@@ -29,9 +29,9 @@ TCPEchoClient: TCPEchoClient.c
 	echo "Compilation de TCPEchoClient"
 	$(CC) $(CFLAGS) -o TCPEchoClient TCPEchoClient.c 
 
-admin: admin.c LibSerHV.o
+admin: admin.c LibSerHV.o LibSer.o
 	echo "Compilation de admin"
-	$(CC) $(CFLAGS) -o admin admin.c LibSerHV.o 
+	$(CC) $(CFLAGS) -o admin admin.c LibSerHV.o LibSer.o
 
 # Nettoyage
 clean:

@@ -253,9 +253,8 @@ void ListingVehiculesHV(char *NomFichier)
    while (bytesRead)
    {
               position = lseek(fd, 0, SEEK_CUR); // Obtenir la position actuelle dans le fichier
-        printf("Reference lue %d et Position actuelle dans le fichier %ld\n", UnRecord.Reference, position);
+        printf("Record lu %d et Position actuelle dans le fichier %ld\n", UnRecord.Reference, position);
 
-      fprintf(stderr, "Record lu %d Bytes \n", bytesRead);
       AfficheVehiculeHV(&UnRecord);
       bytesRead = read(fd, &UnRecord, sizeof(UnRecord));
    }

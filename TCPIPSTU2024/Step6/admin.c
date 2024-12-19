@@ -9,6 +9,8 @@
 #include <time.h>
 #include "data.h"
 #include "LibSerHV.h"
+#include "LibSer.h"
+
 
 // include pour les fonctions entrees sortie
 #include <stdio.h>
@@ -295,7 +297,10 @@ int main()
  char Tampon[80] ;
  int res ;
  struct VehiculeHV  UnRecord ;
- int Numero ;
+ int Numero, quantite, reference ;
+ char dateBuffer[80];
+ time_t rawtime;
+ struct tm *timeinfo;
  while(1)
  {
   printf("-------2022-----------\n") ;
@@ -337,9 +342,27 @@ int main()
             getchar();
             RechercheHV("VehiculesHV", Numero, &UnRecord);
              break ;
+   case '5':
+            
+            time(&rawtime);
+            timeinfo = localtime(&rawtime);
+            strftime(dateBuffer, sizeof(dateBuffer), "%Y-%m-%d %H:%M:%S", timeinfo);
+
+            printf("NomClient:");
+            scanf("%s", Tampon);
+            getchar();
+            printf("Reference:");
+            scanf("%d", &reference);
+            getchar();
+            printf("Quantite:");
+            scanf("%d", &quantite);
+            getchar();
+            ReservationHV("VehiculesHV",reference,quantite);
+            FacturationHV("FactureHV", Tampon, rawtime, quantite, reference);
+         break; 
    case '6': ListingFacturesHV("FactureHV") ;
 	     break ;
-   case '7': AProposServeurHV("V 1","Soultan-Bek","Abiev") ;
+   case '7': AProposServeurHV("V 1","Soultan-Bek Abiev","Jerome Focant") ;
              break ;
    
 	

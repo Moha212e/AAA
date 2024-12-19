@@ -42,6 +42,5 @@ int RechercheHV(char *NomFichier, int Reference, struct VehiculeHV *UnRecord)
 
     printf("RechercheHV<\n");
 
-    // Retourner le résultat
     return found;
 }

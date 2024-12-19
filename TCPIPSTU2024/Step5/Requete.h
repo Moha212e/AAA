@@ -36,5 +36,6 @@ void AfficheRequete(FILE *fp, struct Requete R )
  fprintf(fp,">Constructeur %s \n", R.Constructeur ) ; 
  fprintf(fp,">Modele %s \n", R.Modele ) ; 
  fprintf(fp,">Client %s \n\n", R.NomClient ) ; 
+  fprintf(fp,">Couleur %s \n\n", R.Couleur ) ; 
  return ; 
 }

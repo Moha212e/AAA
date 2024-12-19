@@ -1,82 +1,92 @@
-#include <stdio.h>      /* for printf() and fprintf() */
-#include <sys/socket.h> /* for socket(), bind(), and connect() */
-#include <arpa/inet.h>  /* for sockaddr_in and inet_ntoa() */
-#include <stdlib.h>     /* for atoi() and exit() */
-#include <string.h>     /* for memset() */
-#include <unistd.h>     /* for close() */
+#include <stdio.h>      /* Bibliothèque pour les fonctions d'entrée/sortie comme printf() et fprintf() */
+#include <sys/socket.h> /* Bibliothèque pour les fonctions de socket comme socket(), bind(), et connect() */
+#include <arpa/inet.h>  /* Bibliothèque pour sockaddr_in et inet_ntoa() */
+#include <stdlib.h>     /* Bibliothèque pour atoi() (conversion chaîne → entier) et exit() */
+#include <string.h>     /* Bibliothèque pour memset() */
+#include <unistd.h>     /* Bibliothèque pour close() */
 
-#define MAXPENDING 5    /* Maximum outstanding connection requests */
+#define MAXPENDING 5    /* Nombre maximal de connexions en attente dans la file d'attente */
 
-#include "LibSer.h"  	/* Error handling function */
-#include "HandleTCPClient.h"   /* TCP client handling function */
-#include "LibSerHV.h"
+#include "LibSer.h"         /* Fichier d'en-tête pour les fonctions de gestion des erreurs */
+#include "HandleTCPClient.h" /* Fichier d'en-tête pour la fonction de gestion des clients TCP */
+#include "LibSerHV.h"       /* Fichier d'en-tête pour les fonctionnalités spécifiques à HV */
+
+/* Fonction principale */
 int main(int argc, char *argv[])
 {
-    int servSock;                    /* Socket descriptor for server */
-    int clntSock;                    /* Socket descriptor for client */
-    struct sockaddr_in echoServAddr; /* Local address */
-    struct sockaddr_in echoClntAddr; /* Client address */
-    unsigned short echoServPort;     /* Server port */
-    unsigned int clntLen;            /* Length of client address data structure */
-    char *servIP;                    /* Server IP address (dotted quad) */
-    char host[100];
-    char port[100];
-    if (argc != 3)     /* Test for correct number of arguments */
+    int servSock;                    /* Descripteur de socket pour le serveur */
+    int clntSock;                    /* Descripteur de socket pour le client */
+    struct sockaddr_in echoServAddr; /* Structure contenant l'adresse locale */
+    struct sockaddr_in echoClntAddr; /* Structure contenant l'adresse du client */
+    unsigned short echoServPort;     /* Port du serveur */
+    unsigned int clntLen;            /* Taille de la structure d'adresse du client */
+    char *servIP;                    /* Adresse IP du serveur (en notation pointée) */
+    char host[100];                  /* Nom d'hôte du client */
+    char port[100];                  /* Numéro de port du client */
+
+    /* Vérifie que le nombre d'arguments est correct */
+    if (argc != 3)
     {
-        fprintf(stderr, "Usage:  %s <Server Port>\n", argv[0]);
-        exit(1);
+        fprintf(stderr, "Usage:  %s <Server IP> <Server Port>\n", argv[0]); /* Affiche la syntaxe correcte */
+        exit(1); /* Quitte le programme avec un code d'erreur */
     }
-    servIP = argv[1] ;
-    echoServPort = atoi(argv[2]);  /* First arg:  local port */
 
-    /* Create socket for incoming connections */
+    servIP = argv[1];                 /* Premier argument : adresse IP du serveur */
+    echoServPort = atoi(argv[2]);     /* Deuxième argument : port du serveur */
+
+    /* Crée un socket pour les connexions entrantes */
     if ((servSock = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP)) < 0)
-        DieWithError("socket() failed");
+        DieWithError("socket() failed"); /* Quitte si la création du socket échoue */
     else
-       printf("socket() Ok\n") ;
+        printf("socket() Ok\n"); /* Indique que la création du socket a réussi */
       
-    /* Construct local address structure */
-    memset(&echoServAddr, 0, sizeof(echoServAddr));   /* Zero out structure */
-    echoServAddr.sin_family = AF_INET;                /* Internet address family */
-    echoServAddr.sin_addr.s_addr = inet_addr(servIP); /* Any incoming interface */
-    echoServAddr.sin_port = htons(echoServPort);      /* Local port */
+    /* Initialise la structure d'adresse locale */
+    memset(&echoServAddr, 0, sizeof(echoServAddr));   /* Met tous les champs de la structure à zéro */
+    echoServAddr.sin_family = AF_INET;                /* Famille d'adresses Internet (IPv4) */
+    echoServAddr.sin_addr.s_addr = inet_addr(servIP); /* Définit l'adresse IP du serveur */
+    echoServAddr.sin_port = htons(echoServPort);      /* Définit le port local (conversion hôte → réseau) */
 
-    /* Bind to the local address */
+    /* Lie le socket à l'adresse locale */
     if (bind(servSock, (struct sockaddr *) &echoServAddr, sizeof(echoServAddr)) < 0)
-        DieWithError("bind() failed");
+        DieWithError("bind() failed"); /* Quitte si l'association échoue */
     else
-       printf("bind() Ok\n") ;    
+        printf("bind() Ok\n"); /* Indique que le bind a réussi */
 
-    /* Mark the socket so it will listen for incoming connections */
+    /* Met le socket en mode écoute */
     if (listen(servSock, MAXPENDING) < 0)
-        DieWithError("listen() failed");
+        DieWithError("listen() failed"); /* Quitte si listen() échoue */
     else
-       printf("listen() Ok\n") ;     
+        printf("listen() Ok\n"); /* Indique que le socket est prêt à écouter */
 
-    for (;;) /* Run forever */
+    /* Boucle infinie pour gérer les connexions */
+    for (;;)
     {
-        /* Set the size of the in-out parameter */
+        /* Définit la taille de la structure d'adresse du client */
         clntLen = sizeof(echoClntAddr);
 
-        /* Wait for a client to connect */
-        if ((clntSock = accept(servSock, (struct sockaddr *) &echoClntAddr, 
-                               &clntLen)) < 0)
-            DieWithError("accept() failed");
+        /* Attend qu'un client se connecte */
+        if ((clntSock = accept(servSock, (struct sockaddr *) &echoClntAddr, &clntLen)) < 0)
+            DieWithError("accept() failed"); /* Quitte si accept() échoue */
         else
-           printf("accept() Ok\n") ;     
+            printf("accept() Ok\n"); /* Indique qu'une connexion a été acceptée */
 
+        /* Récupère des informations sur le client connecté */
+        getpeername(servSock, (struct sockaddr*)&echoClntAddr, &clntLen); /* Récupère l'adresse et le port du client */
+        getnameinfo((struct sockaddr*)&echoClntAddr, clntLen,
+                    host, 10, /* Stocke le nom d'hôte dans le tableau `host` */
+                    port, 10, /* Stocke le port dans le tableau `port` */
+                    MAXPENDING); /* Indique les options pour la résolution */
 
-        /* clntSock is connected to a client! */
-        getpeername(servSock,(struct sockaddr*)&echoClntAddr,&clntLen);
-        getnameinfo((struct sockaddr*)&echoClntAddr,clntLen,
-        host, 10,
-        port, 10,
-        MAXPENDING);
-        printf("Client connecte --> Adresse IP: %s -- Port: %s\n",host,port);
-        
+        /* Affiche l'adresse IP et le port du client */
+        printf("Client connecté --> Adresse IP: %s -- Port: %s\n", host, port);
+
+        /* Affiche l'adresse IP du client sous forme de chaîne */
         printf("Handling client %s\n", inet_ntoa(echoClntAddr.sin_addr));
 
+        /* Appelle la fonction pour gérer le client */
         HandleTCPClient(clntSock);
     }
+
+    /* Code jamais atteint car le serveur tourne en boucle infinie */
     /* NOT REACHED */
 }
